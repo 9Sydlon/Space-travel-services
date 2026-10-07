@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Mars travel
+      </h1>
+
+      <form class="form" action="/answers-mars" method="post">
+
+        <p>
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Given name",
+
+    isPageHeading: false
+  },
+  name: "mars-given-name",
+  value: data['mars-given-name']
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Family name",
+
+    isPageHeading: false
+  },
+  name: "family-name",
+  value: data['mars-family-name']
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{{ govukInput({
+  label: {
+    text: "Building and street",
+
+    isPageHeading: false
+  },
+  name: "street-name",
+  value: data['mars-street-name']
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{{ govukInput({
+  label: {
+    text: "City",
+
+    isPageHeading: false
+  },
+  name: "city-name",
+  value: data['mars-city-name']
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{{ govukInput({
+  label: {
+    text: "Postcode",
+    value: data['mars-postcode']
+  },
+  classes: "govuk-!-width-one-third",
+  name: "postcode"
+}) }}
+         
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
